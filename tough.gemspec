@@ -35,6 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest-utils"
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-meta"
   spec.add_runtime_dependency "zxcvbn-ruby", "~> 0.1.1"
 end

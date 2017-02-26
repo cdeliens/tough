@@ -7,20 +7,19 @@ module ActiveModel
         #2 somewhat guessable: protection from unthrottled online attacks. (guesses < 10^8)
         #3 safely unguessable: moderate protection from offline slow-hash scenario. (guesses < 10^10)
         #4 very unguessable: strong protection from offline slow-hash scenario. (guesses >= 10^10)
-        minimum_score_to_pass = 3
-        unless Zxcvbn.test(value).score >= minimum_score_to_pass
-          record.errors[attribute] << "is too easy to guess"
+        unless Zxcvbn.test(value).score >= Tough.zxcvbn_minimum_score_to_pass
+          record.errors[attribute] << Tough.zxcvbn_error_message 
         end
       end
     end
     module ClassMethods
-      # Validates whether or not the specified password is valid by ZXCVBN metrics.
+      # Validates whether or not the specified URL is valid.
       #
       #   class User < ActiveRecord::Base
-      #     validates_with_zxcvbn :site
+      #     validates_url_format_of :site
       #
       #     # Validates against a list of valid TLD.
-      #     validates_by_zxcvbn_metric :site, tld: true
+      #     validates_url_format_of :site, tld: true
       #   end
       #
       def validates_by_zxcvbn_metric(*attr_names)
