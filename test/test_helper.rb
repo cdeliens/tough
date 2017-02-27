@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require "bundler/setup"
 require "active_record"
 require "active_support/all"
