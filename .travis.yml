@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 sudo: false
-script: bundle exec rake
+script: bundle exec rake && CODECLIMATE_REPO_TOKEN=8ba46fd5d9f5e9ce184d6a47895ec5a270d426dd1d95713a7a08e516e9769e3b bundle exec codeclimate-test-reporter
 notifications:
   email: false
 rvm:
