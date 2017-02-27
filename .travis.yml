@@ -5,10 +5,7 @@ script: bundle exec rake
 notifications:
   email: false
 rvm:
-  - '2.3.0'
-  - '2.2'
-  - '2.1'
-  - '2.0'
+  - '2.3.3'
 addons:
   code_climate:
     repo_token: 8ba46fd5d9f5e9ce184d6a47895ec5a270d426dd1d95713a7a08e516e9769e3b
