@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/cdeliens/tough.svg?branch=master)](https://travis-ci.org/cdeliens/tough)
 [![Code Climate](https://codeclimate.com/github/cdeliens/tough/badges/gpa.svg)](https://codeclimate.com/github/cdeliens/tough)
 [![Test Coverage](https://codeclimate.com/github/cdeliens/tough/badges/coverage.svg)](https://codeclimate.com/github/cdeliens/tough/coverage)
 [![Issue Count](https://codeclimate.com/github/cdeliens/tough/badges/issue_count.svg)](https://codeclimate.com/github/cdeliens/tough)
+
 # Tough
 
 Be sure to have TOUGH Passwords in your Rails application with this gem. Based on ZXCVBN library to validate passwords strength, also some normal validators for special characters, capital letters and lowercase letters, minimum characters length.
@@ -22,8 +24,8 @@ Or install it yourself as:
     $ gem install tough
 
 ## Usage
-
-`config/initializers/tough.rb
+## config/initializers/tough.rb
+```ruby
  Tough.configuration do |config|
   config.zxcvbn_minimum_score_to_pass = 3
   config.zxcvbn_error_message = "is too easy to guess"
@@ -32,15 +34,16 @@ Or install it yourself as:
   config.minimum_characters_error_message = "must be a minimum of #{Tough.minimum_characters} characters long"
   config.capitals_lowercase_error_message = "must have lowercase and uppercase letters"
  end
-`
-`
+```
+## user.rb
+```ruby
  class User < ActiveRecord::Base
    validates_by_zxcvbn_metric :password
    validates_capitals_and_lowercase_for :password
    validates_minimum_characters_for :password
    validates_special_characters_for :password
  end
-`
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
